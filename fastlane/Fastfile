@@ -1,0 +1,7 @@
+lane :test do
+  cocoapods
+  scan(
+    scheme: "FlickrGallery",
+    devices: ["iPhone 6s"]
+  )
+end
