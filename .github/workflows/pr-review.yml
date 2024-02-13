@@ -19,6 +19,7 @@ jobs:
       - uses: PycKamil/ai-pr-reviewer@1.0
         env:
           AZURE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           azure_api_instance_name: "gen-ai-lab-swe-1"
           azure_api_deployment_name: "gpt-4v"
