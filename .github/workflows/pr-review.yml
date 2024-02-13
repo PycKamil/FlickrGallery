@@ -1,0 +1,27 @@
+name: "PR review"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: PycKamil/ai-pr-reviewer@1
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        with:
+          azure_api_instance_name: "gen-ai-lab-swe-1"
+          azure_api_deployment_name: "gpt-4v"
+          azure_api_version: "2023-07-01-preview"
+          review_comment_lgtm: false
+          openai_heavy_model: gpt-4
