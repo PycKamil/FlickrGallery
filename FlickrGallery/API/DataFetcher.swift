@@ -17,7 +17,12 @@ enum FetchError: Error {
     case network
 }
 
-class DataFetcher {
+final class DataFetcher {
+
+    func test() {
+        NSLog("Test")
+    }
+    
     func fetchPhotosPublic(completion: @escaping (Result<[INSPhoto], FetchError>) -> Void) {
         flickrProvider.request(.photosPublic) { result in
             switch result {
